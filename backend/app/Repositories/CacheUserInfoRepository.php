@@ -11,7 +11,7 @@ class CacheUserInfoRepository implements UserInfoRepository
 {
     public function save(UserInfoSaveRequestDto $userInfoSave): bool
     {
-        $cacheName = 'user_info_user_id_'.$userInfoSave->getUserId();
+        $cacheName = $this->getCacheName($userInfoSave->getUserId());
 
         $userInfo = Cache::get($cacheName);
 
@@ -28,7 +28,8 @@ class CacheUserInfoRepository implements UserInfoRepository
 
     public function list(int $userId): UserInfoListResponseDto
     {
-        $cacheName = 'user_info_user_id_'.$userId;
+        $cacheName = $this->getCacheName($userId);
+
         if(!Cache::has($cacheName)) {
             return new UserInfoListResponseDto([]);
         }
@@ -51,7 +52,7 @@ class CacheUserInfoRepository implements UserInfoRepository
 
     public function checkUniqueFio(int $userId, string $name, string $surname, string $patronymic): bool
     {
-        $cacheName = 'user_info_user_id_'.$userId;
+        $cacheName = $this->getCacheName($userId);
         if(!Cache::has($cacheName)) {
             return true;
         }
@@ -70,5 +71,14 @@ class CacheUserInfoRepository implements UserInfoRepository
         }
 
         return true;
+    }
+
+    /**
+     * @param $userId
+     * @return string
+     */
+    private function getCacheName(int $userId): string
+    {
+        return 'user_info_user_id_' . $userId;
     }
 }
