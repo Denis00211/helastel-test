@@ -1,7 +1,6 @@
 # Тестовое задание Helastel
 
 ## Документация по api
-https://documenter.getpostman.com/view/1752603/TVYGdJgE#cc2ee0e2-23f2-4365-9697-2d0be871a7a1
 https://documenter.getpostman.com/view/1752603/TzCP8oEr
 использовал php 7.4
 
