@@ -61,7 +61,7 @@ class UserInfoController extends Controller
             $request->get('type')
         ));
         return $this->response(
-            'Сохранение информации о пользователе',
+            'Получение информации о пользователе',
             UserInfoListResource::collection($userInfoList->getUserInfoList())
         );
     }

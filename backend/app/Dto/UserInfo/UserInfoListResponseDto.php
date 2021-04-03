@@ -7,11 +7,11 @@ class UserInfoListResponseDto
     /**
      * @var array
      */
-    private $userInfoList;
+    private array $userInfoList;
 
     /**
      * UserInfoList constructor.
-     * @param array $userInfoList
+     * @param UserInfoResponseDto[] $userInfoList
      */
     public function __construct(array $userInfoList)
     {
